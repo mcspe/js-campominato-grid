@@ -69,7 +69,7 @@ startBtn.addEventListener('click', function(){
       const msGridContainer = generateRow(gridSizes[gridId - 1], generatedID);
       msGridContainer.className = 'ms-grid-container';
       
-      console.log(generatedID);
+      //console.log(generatedID);
       return msGridContainer;
     }
 
