@@ -6,6 +6,8 @@
 
 .ms-btn{
   background: lightseagreen;
+  text-transform: uppercase;
+  font-size: .8rem;
   border: none;
   padding: 5px 15px;
   border-radius: 15px;
@@ -17,6 +19,12 @@
 
 .ms-btn.ms-level{
   margin: 10px;
+}
+
+.ms-btn.ms-back{
+  position: absolute;
+  top: 10px;
+  right: 10px;
 }
 
 .ms-grid-container{

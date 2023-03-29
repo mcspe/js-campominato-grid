@@ -6,13 +6,35 @@ const levelsDifficulty = [
 ];
 const levelsNumber = 3;
 const container = document.querySelector('.ms-container');
+container.pageID = 0;
+const containerDefault = container.innerHTML;
 const startBtn = document.querySelector('.ms-btn.ms-start');
+const backBtn = document.querySelector('.ms-btn.ms-back');
+
 
  /************ LOGICA ************/
 startBtn.addEventListener('click', function(){
   startBtn.classList.add('d-none');
+  backBtn.classList.remove('d-none');
+  container.pageID = 1;
+  //console.log(container.pageID);
   container.append(generateLevelSelector(levelsNumber, levelsDifficulty, container));
   //console.log(startBtn);
+});
+
+backBtn.addEventListener('click', function(){
+  if (container.pageID === 1) {
+    container.pageID = 0;
+    // container.lastElementChild.remove();
+    container.lastChild.remove();
+    startBtn.classList.remove('d-none');
+    backBtn.classList.add('d-none');
+    //console.log(containerDefault, startBtn, container);
+  } else if (container.pageID === 2){
+    container.pageID = 1;
+    container.lastChild.remove();
+    container.append(generateLevelSelector(levelsNumber, levelsDifficulty, container));
+  }
 });
 
     /************ FUNZIONI ************/
@@ -26,6 +48,8 @@ startBtn.addEventListener('click', function(){
         msLevelBtn.difficultyID = i;
         msLevelBtn.addEventListener('click', function () {
           msLevelSelector.classList.add('d-none');
+          container.pageID = 2;
+          //console.log(container.pageID);
           printBox.append(generateGrid(this.difficultyID));
         });
         msLevelSelector.append(msLevelBtn);
